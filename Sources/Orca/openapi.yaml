@@ -1,0 +1,1010 @@
+openapi: 3.1.0
+info:
+  title: Crosspay API
+  version: 1.0.0
+paths:
+  /tenant/entitlements/active:
+    post:
+      operationId: postTenantEntitlementsActive
+      summary: Post tenant entitlements active
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantActiveEntitlementsInputBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantActiveEntitlementsResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/entitlements/{environment}:
+    get:
+      operationId: getTenantEntitlementsByEnvironment
+      summary: Get tenant entitlements by environment
+      parameters:
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantListEntitlementsResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/gocardless/billing-request-flow/{environment}:
+    post:
+      operationId: postTenantGocardlessBillingRequestFlowByEnvironment
+      summary: Post tenant gocardless billing request flow by environment
+      parameters:
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantGoCardlessBillingRequestFlowInputBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantGoCardlessBillingRequestFlowResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/identify:
+    post:
+      operationId: postTenantIdentify
+      summary: Post tenant identify
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantIdentifyUserInputBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantIdentifyUserResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/offerings:
+    get:
+      operationId: getTenantOfferings
+      summary: Get tenant offerings
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantListOfferingsResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/playstore/sync-purchases:
+    post:
+      operationId: postTenantPlaystoreSyncPurchases
+      summary: Post tenant playstore sync purchases
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantSyncPlayStorePastPurchasesInputBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantSyncPlayStorePastPurchasesResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/products:
+    get:
+      operationId: getTenantProducts
+      summary: Get tenant products
+      parameters:
+      - name: api-key
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantListProductsResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/stripe/checkout/{environment}:
+    post:
+      operationId: postTenantStripeCheckoutByEnvironment
+      summary: Post tenant stripe checkout by environment
+      parameters:
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantStripeCheckoutInputBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantStripeCheckoutResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/stripe/products/{environment}:
+    get:
+      operationId: getTenantStripeProductsByEnvironment
+      summary: Get tenant stripe products by environment
+      parameters:
+      - name: environment
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantListStripeProductsResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+  /tenant/subscriptions/active:
+    post:
+      operationId: postTenantSubscriptionsActive
+      summary: Post tenant subscriptions active
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TenantActiveSubscriptionInputBody'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantActiveSubscriptionResponseBody'
+        default:
+          description: Error
+          content:
+            application/problem+json:
+              schema:
+                $ref: '#/components/schemas/ErrorModel'
+      tags:
+      - Tenant
+components:
+  schemas:
+    ErrorDetail:
+      type: object
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      additionalProperties: false
+    ErrorModel:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/ErrorModel.json
+          readOnly: true
+        detail:
+          description: A human-readable explanation specific to this occurrence of
+            the problem.
+          type: string
+          examples:
+          - Property foo is required but is missing.
+        errors:
+          description: Optional list of individual error details
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/ErrorDetail'
+        instance:
+          description: A URI reference that identifies the specific occurrence of
+            the problem.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/error-log/abc123
+        status:
+          description: HTTP status code
+          type: integer
+          format: int64
+          examples:
+          - 400
+        title:
+          description: A short, human-readable summary of the problem type. This value
+            should not change between occurrences of the error.
+          type: string
+          examples:
+          - Bad Request
+        type:
+          description: A URI reference to human-readable documentation for the error.
+          type: string
+          format: uri
+          default: about:blank
+          examples:
+          - https://example.com/errors/example
+      additionalProperties: false
+    PlayStorePastPurchase:
+      type: object
+      properties:
+        product_id:
+          type: string
+        purchase_id:
+          type: string
+        purchase_token:
+          type: string
+        transaction_date:
+          type: string
+      additionalProperties: false
+      required:
+      - product_id
+      - purchase_token
+      - purchase_id
+      - transaction_date
+    StorableEntitlement:
+      type: object
+      properties:
+        entitlement_id:
+          type: string
+        entitlement_type:
+          type: string
+        expires_at:
+          type: integer
+          format: int64
+        id:
+          type: string
+        product_id:
+          type: string
+        purchase_state:
+          type: string
+        renewal_status:
+          type: string
+        status:
+          type: string
+        store:
+          type: string
+        trial_expires_at:
+          type:
+          - integer
+          - 'null'
+          format: int64
+      additionalProperties: false
+      required:
+      - id
+      - product_id
+      - entitlement_id
+      - expires_at
+      - trial_expires_at
+      - store
+      - status
+      - entitlement_type
+    StorableSubscription:
+      type: object
+      properties:
+        entitlement_id:
+          type: string
+        expires_at:
+          type: integer
+          format: int64
+        id:
+          type: string
+        product_id:
+          type: string
+        renewal_status:
+          type: string
+        status:
+          type: string
+        store:
+          type: string
+        trial_expires_at:
+          type:
+          - integer
+          - 'null'
+          format: int64
+      additionalProperties: false
+      required:
+      - id
+      - product_id
+      - entitlement_id
+      - expires_at
+      - trial_expires_at
+      - store
+      - status
+      - renewal_status
+    SubscriptionStripePrice:
+      type: object
+      properties:
+        currency:
+          type: string
+        formattedPrice:
+          type: string
+        id:
+          type: string
+        price:
+          type: integer
+          format: int32
+        unitLabel:
+          type: string
+      additionalProperties: false
+      required:
+      - id
+      - price
+      - currency
+      - formattedPrice
+      - unitLabel
+    SubscriptionStripeProduct:
+      type: object
+      properties:
+        active:
+          type: boolean
+        created:
+          type: integer
+          format: int64
+        deleted:
+          type: boolean
+        description:
+          type: string
+        id:
+          type: string
+        images:
+          type:
+          - array
+          - 'null'
+          items:
+            type: string
+        livemode:
+          type: boolean
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        name:
+          type: string
+        object:
+          type: string
+        price:
+          $ref: '#/components/schemas/SubscriptionStripePrice'
+        shippable:
+          type: boolean
+        statement_descriptor:
+          type: string
+        type:
+          type: string
+        unit_label:
+          type: string
+        updated:
+          type: integer
+          format: int64
+        url:
+          type: string
+      additionalProperties: false
+      required:
+      - id
+      - object
+      - active
+      - created
+      - price
+      - images
+      - livemode
+      - metadata
+      - name
+      - type
+      - updated
+    TenantActiveEntitlementsInputBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantActiveEntitlementsInputBody.json
+          readOnly: true
+        customer_email:
+          type: string
+        environment:
+          type:
+          - string
+          - 'null'
+          default: prod
+      additionalProperties: false
+      required:
+      - environment
+      - customer_email
+    TenantActiveEntitlementsResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantActiveEntitlementsResponseBody.json
+          readOnly: true
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/StorableEntitlement'
+        error:
+          type: string
+      additionalProperties: false
+    TenantActiveSubscriptionInputBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantActiveSubscriptionInputBody.json
+          readOnly: true
+        customer_email:
+          type: string
+        environment:
+          type:
+          - string
+          - 'null'
+          default: prod
+      additionalProperties: false
+      required:
+      - environment
+      - customer_email
+    TenantActiveSubscriptionResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantActiveSubscriptionResponseBody.json
+          readOnly: true
+        data:
+          $ref: '#/components/schemas/StorableSubscription'
+        error:
+          type: string
+      additionalProperties: false
+    TenantEntitlement:
+      type: object
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        entitlement_type:
+          type: string
+          enum:
+          - consumable
+          - non_consumable
+          - subscription
+        id:
+          type: string
+        metadata:
+          type: string
+          contentEncoding: base64
+        name:
+          type: string
+        period_ms:
+          type:
+          - integer
+          - 'null'
+          format: int64
+        products:
+          $ref: '#/components/schemas/TenantProducts'
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - description
+      - period_ms
+      - metadata
+      - entitlement_type
+      - products
+    TenantEntitlementProduct:
+      type: object
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        id:
+          type: string
+        metadata:
+          type: string
+          contentEncoding: base64
+        name:
+          type: string
+        product_id:
+          type: string
+      additionalProperties: false
+      required:
+      - id
+      - product_id
+      - name
+      - description
+      - metadata
+    TenantGoCardlessBillingRequestFlowInputBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantGoCardlessBillingRequestFlowInputBody.json
+          readOnly: true
+        customer_email:
+          type: string
+        failure_redirect_url:
+          type: string
+        product_id:
+          type: string
+        prorated_product_id:
+          type: string
+        proration_mode:
+          type: string
+          enum:
+          - upgrade
+          - downgrade
+        redirect_url:
+          type: string
+      additionalProperties: false
+      required:
+      - product_id
+      - customer_email
+      - redirect_url
+      - failure_redirect_url
+    TenantGoCardlessBillingRequestFlowResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantGoCardlessBillingRequestFlowResponseBody.json
+          readOnly: true
+        error:
+          type: string
+        url:
+          type: string
+      additionalProperties: false
+      required:
+      - url
+    TenantIdentifyUserInputBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantIdentifyUserInputBody.json
+          readOnly: true
+        customer_email:
+          type: string
+      additionalProperties: false
+      required:
+      - customer_email
+    TenantIdentifyUserResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantIdentifyUserResponseBody.json
+          readOnly: true
+        customer_id:
+          type: string
+        error:
+          type: string
+      additionalProperties: false
+    TenantListEntitlementsResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantListEntitlementsResponseBody.json
+          readOnly: true
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TenantEntitlement'
+        error:
+          type: string
+      additionalProperties: false
+      required:
+      - data
+    TenantListOfferingsResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantListOfferingsResponseBody.json
+          readOnly: true
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TenantOfferingsWithEntitlements'
+        error:
+          type: string
+      additionalProperties: false
+    TenantListProductsResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantListProductsResponseBody.json
+          readOnly: true
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TenantProduct'
+        error:
+          type: string
+      additionalProperties: false
+      required:
+      - data
+    TenantListStripeProductsResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantListStripeProductsResponseBody.json
+          readOnly: true
+        data:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/SubscriptionStripeProduct'
+        error:
+          type: string
+      additionalProperties: false
+      required:
+      - data
+    TenantOfferingEntitlement:
+      type: object
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        entitlement_type:
+          type: string
+        id:
+          type: string
+        level:
+          type: integer
+          format: int32
+        name:
+          type: string
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - description
+      - entitlement_type
+      - level
+    TenantOfferingsWithEntitlements:
+      type: object
+      properties:
+        created_at:
+          type: string
+          format: date-time
+        description:
+          type:
+          - string
+          - 'null'
+        entitlements:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TenantOfferingEntitlement'
+        id:
+          type: string
+        name:
+          type: string
+      additionalProperties: false
+      required:
+      - id
+      - name
+      - description
+      - created_at
+      - entitlements
+    TenantProduct:
+      type: object
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        entitlement_id:
+          type: string
+        id:
+          type: string
+        metadata:
+          type: string
+          contentEncoding: base64
+        name:
+          type: string
+        product_id:
+          type: string
+        store:
+          type: string
+      additionalProperties: false
+      required:
+      - id
+      - product_id
+      - name
+      - description
+      - metadata
+      - store
+      - entitlement_id
+    TenantProducts:
+      type: object
+      properties:
+        appstore:
+          $ref: '#/components/schemas/TenantEntitlementProduct'
+        gocardless:
+          $ref: '#/components/schemas/TenantEntitlementProduct'
+        playstore:
+          $ref: '#/components/schemas/TenantEntitlementProduct'
+        stripe:
+          $ref: '#/components/schemas/TenantEntitlementProduct'
+      additionalProperties: false
+      required:
+      - appstore
+      - playstore
+      - stripe
+      - gocardless
+    TenantStripeCheckoutInputBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantStripeCheckoutInputBody.json
+          readOnly: true
+        customer_email:
+          type: string
+        failure_redirect_url:
+          type: string
+        product_id:
+          type: string
+        prorated_product_id:
+          type: string
+        proration_mode:
+          type: string
+          enum:
+          - upgrade
+          - downgrade
+        redirect_url:
+          type: string
+      additionalProperties: false
+      required:
+      - product_id
+      - customer_email
+      - redirect_url
+      - failure_redirect_url
+    TenantStripeCheckoutResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantStripeCheckoutResponseBody.json
+          readOnly: true
+        error:
+          type: string
+        url:
+          type: string
+      additionalProperties: false
+      required:
+      - url
+    TenantSyncPlayStorePastPurchasesInputBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantSyncPlayStorePastPurchasesInputBody.json
+          readOnly: true
+        customer_email:
+          type: string
+        past_purchases:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/PlayStorePastPurchase'
+      additionalProperties: false
+      required:
+      - customer_email
+      - past_purchases
+    TenantSyncPlayStorePastPurchasesResponseBody:
+      type: object
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          type: string
+          format: uri
+          examples:
+          - https://example.com/schemas/TenantSyncPlayStorePastPurchasesResponseBody.json
+          readOnly: true
+        data:
+          $ref: '#/components/schemas/TenantSyncPlayStorePurchaseResponseData'
+        error:
+          type: string
+      additionalProperties: false
+    TenantSyncPlayStorePurchaseResponseData:
+      type: object
+      properties:
+        products:
+          type:
+          - array
+          - 'null'
+          items:
+            $ref: '#/components/schemas/TenantSyncProduct'
+      additionalProperties: false
+    TenantSyncProduct:
+      type: object
+      properties:
+        description:
+          type:
+          - string
+          - 'null'
+        entitlement_id:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        product_id:
+          type: string
+        receipt:
+          type: string
+      additionalProperties: false
+      required:
+      - id
+      - product_id
+      - name
+      - description
+      - metadata
+      - entitlement_id
+      - receipt
+  securitySchemes:
+    bearerAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http
+tags:
+- description: Public API-facing tenant operations.
+  name: Tenant
