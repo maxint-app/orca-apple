@@ -62,12 +62,6 @@ try await Orca.purchase(entitlement: product.entitlement)
 
 Each variant carries `id`, `name`, `currencyCode`, `description`, `formattedPrice`, `price`, and its backing `TenantEntitlement`.
 
-## Integration Notes
-
-This package intentionally does not include Tauri-specific FFI glue.
-
-If you need Rust <-> Swift bridging for a host app/plugin (for example, Tauri macOS), keep that glue code in the host plugin/package and depend on `orca-apple` as a clean SDK dependency.
-
 ## Development
 
 The OpenAPI client is generated from the Orca server OpenAPI spec:
